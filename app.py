@@ -166,8 +166,8 @@ if st.button("RUN VERIFICATION"):
             try:
                 response = engine.generate_content([prompt] + pil_images)
                 st.session_state.report = response.text
-            except Exception:
-                st.error("Processing failed.")
+            except Exception as e:
+                st.error(f"Hibaüzenet: {e}")
     else:
         st.error("Upload at least 3 images (Side, Sole, Tag).")
 
@@ -188,4 +188,5 @@ if st.session_state.report:
         st.warning(f"Document generation error: {e}")
 
 st.divider()
+
 st.caption("BootCheck Verification Services 2026")
